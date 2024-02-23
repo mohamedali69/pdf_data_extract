@@ -16,8 +16,8 @@ def extract_data_from_pdf(pdf_path):
         extracted_data.append(number_match.group(1))
 
     # Extract data from page 3
-    page3_text = pdf_reader.pages[2].extract_text()
-    extracted_data.append(page3_text)
+    page2_text = pdf_reader.pages[2].extract_text()
+    extracted_data.append(page2_text)
 
     pdf_file.close()
 
