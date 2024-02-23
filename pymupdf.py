@@ -1,9 +1,16 @@
-import fitz  # PyMuPDF
+import fitz
 
-doc = fitz.open("./Contract.pdf")
-out = open("output.txt", "wb")
-for page in doc:
-    text = page.get_text().encode("utf8")
-    out.write(text)
-    out.write(bytes((12,)))
-out.close()
+pdf_file = "./Contract.pdf"
+doc = fitz.open(pdf_file)
+
+target_x = 100
+target_y = 200
+
+for page in doc.pages():
+    words = page.get_text("words")
+    for word in words:
+        x, y = word[7], word[7]
+        if x == target_x and y == target_y:
+            print(f"Word: {word['text']}, Position: ({x}, {y})")
+
+doc.close()
